@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { LoginComponent } from './components/login.component';
 
 @NgModule({
   declarations: [LoginComponent],
-  imports: [ReactiveFormsModule, HttpClientModule],
+  imports: [HttpClientModule, ReactiveFormsModule],
   exports: [LoginComponent],
   providers: [],
 })
