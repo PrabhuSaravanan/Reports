@@ -43,7 +43,7 @@
           <div class="flex items-center">
             <button
               class="text-gray-600 font-semibold"
-              [routerLink]="menu.route"
+              [routerLink]="'/' + menu.route"
             >
               {{ menu.title }}
             </button>
@@ -74,7 +74,7 @@
             <div class="flex items-center">
               <button
                 class="text-gray-600 ml-3 border-l-2 p-2"
-                [routerLink]="submenu.route"
+                [routerLink]="'/' + submenu.route"
               >
                 {{ submenu.title }}
               </button>

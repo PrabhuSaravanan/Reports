@@ -24,7 +24,7 @@ export class MenuComponent {
     {
       title: 'Reports',
       icon: '',
-      submenus: [{ title: 'Users Report', route: '' }],
+      submenus: [{ title: 'Users Report', route: 'reports/users-report' }],
       expanded: false,
     },
   ] as MenuItem[];

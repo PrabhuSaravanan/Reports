@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+// import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +12,11 @@ export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public isLoginFailed: boolean = false;
 
-  constructor(private _formbuilder: FormBuilder, private _router: Router) {}
+  constructor(
+    private _formbuilder: FormBuilder,
+    private _router: Router
+  ) // private _authService: AuthenticationService
+  {}
 
   ngOnInit(): void {
     this.initLoginForm();
@@ -25,12 +25,12 @@ export class LoginComponent implements OnInit {
   public loginFormSubmit() {
     const username = this.loginForm.get('username')?.value;
     const password = this.loginForm.get('password')?.value;
-
-    if (this._checkCredentials(username, password)) {
-      this._router.navigate(['/dashboard']);
-    } else {
-      this.isLoginFailed = true;
-    }
+    this._router.navigate(['/dashboard']);
+    // this._authService.login(username, password).subscribe((response) => {
+    //   const token = response.token;
+    //   sessionStorage.setItem('token', token);
+    //   this._router.navigate(['/dashboard']);
+    // });
   }
 
   public initLoginForm() {
@@ -38,11 +38,5 @@ export class LoginComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
-  }
-
-  private _checkCredentials(username: string, password: string) {
-    const hardcodedUsername = 'hellboyprabhu';
-    const hardcodedPassword = 'hellboy@RedSky';
-    return username === hardcodedUsername && password === hardcodedPassword;
   }
 }
